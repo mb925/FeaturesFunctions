@@ -1,3 +1,5 @@
+import csv
+import math
 import os
 
 import numpy as np
@@ -6,7 +8,6 @@ import config as cfg
 import json
 import matplotlib.pyplot as plt
 import seaborn as sns
-from mpl_toolkits.mplot3d import Axes3D
 
 def create_protein_terms_features_table(terms, features):
 
@@ -18,7 +19,7 @@ def create_protein_terms_features_table(terms, features):
         for term in terms:
             print(term)
             # parse_file_proteins_features(term, feature)
-            generate_heatmaps(term)
+            generate_heatmaps(term, feature)
 
 
 def parse_file_protein_terms(term):
@@ -87,35 +88,37 @@ def calculate_jaccard_index(term, feature):
         if jaccard != 0:
             dict_jaccard[term + '-' + feature].append(jaccard)
 
-    print(dict_jaccard[term + '-' + feature])
+
     y = np.array(dict_jaccard[term + '-' + feature])
     plt.hist(y)
     ax = plt.gca()  # get axis handle
     p = ax.patches
     heights = [patch.get_height() for patch in p]
-    print(heights)
     plt.close()
     row = []
-    for i in range(10):
+    for j in range(10):
         row.append(term)
-        row.append(i + 1)
-        row.append(heights[i])
-    return row
+        row.append(j + 1)
+        row.append(math.floor(heights[j]))
+
+    row_splitted = [row[i:i + 3] for i in range(0, len(row), 3)]
+    return row_splitted
 
 def generate_heatmaps(term, feature):
-    row = calculate_jaccard_index(term, feature)
-    if os.path.isfile(feature + '.csv'):
-        # scrivi il nuovo termine
-        with open(cfg.data['data'] + 'heatmaps/' + feature + '.csv', 'a') as file:
-            for line in row:
-                file.write(line)
-                file.write('\n')
-    else:
-        # crei file e scrivi il nuovo termine
-        with open(cfg.data['data'] + 'heatmaps' + feature + '.csv', 'w') as file:
-            for line in row:
-                file.write(line)
-                file.write('\n')
+    rows = calculate_jaccard_index(term, feature)
+    with open(cfg.data['data'] + 'heatmaps/' + feature + '.csv', "w+", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(rows)
+
+        # flight = sns.load_dataset('flights')  # load flights datset from GitHub seaborn repository
+        #
+        # # reshape flights dataset in proper format to create seaborn heatmap
+        # flights_df = flight.pivot('month', 'year', 'passengers')
+        #
+        # sns.heatmap(flights_df)# create seaborn heatmap
+        #
+        # plt.show()
+        # plt.close()
 
 
 
