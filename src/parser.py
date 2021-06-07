@@ -15,11 +15,11 @@ def create_protein_terms_features_table(terms, features):
     #     parse_file_protein_terms(term)
 
     for feature in features:
-        print(feature)
         for term in terms:
             print(term)
             # parse_file_proteins_features(term, feature)
-            generate_heatmaps(term, feature)
+            # generate_heatmaps_files(term, feature)
+        generate_heatmaps(feature)
 
 
 def parse_file_protein_terms(term):
@@ -104,21 +104,32 @@ def calculate_jaccard_index(term, feature):
     row_splitted = [row[i:i + 3] for i in range(0, len(row), 3)]
     return row_splitted
 
-def generate_heatmaps(term, feature):
+def generate_heatmaps_files(term, feature):
     rows = calculate_jaccard_index(term, feature)
-    with open(cfg.data['data'] + 'heatmaps/' + feature + '.csv', "w+", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerows(rows)
+    headers = ['term', 'jaccard', 'proteins', 'feature']
+    file_exists = os.path.isfile(cfg.data['data'] + 'heatmaps/dataset.csv')
+    with open(cfg.data['data'] + 'heatmaps/dataset.csv', "a", newline="") as f:
+        writer = csv.DictWriter(f, delimiter=',', lineterminator='\n', fieldnames=headers)
+        if not file_exists:
+            writer.writeheader()
+        for row in rows:
+            writer.writerow({'term': row[0], 'jaccard': row[1], 'proteins': row[2], 'feature': feature})
 
-        # flight = sns.load_dataset('flights')  # load flights datset from GitHub seaborn repository
-        #
-        # # reshape flights dataset in proper format to create seaborn heatmap
-        # flights_df = flight.pivot('month', 'year', 'passengers')
-        #
-        # sns.heatmap(flights_df)# create seaborn heatmap
-        #
-        # plt.show()
-        # plt.close()
+def generate_heatmaps(feature):
+    term_feature = pd.read_csv(cfg.data['data'] + 'heatmaps/dataset.csv')
+    print(term_feature)
+
+
+    df_range = term_feature.loc[(term_feature.feature == feature)]
+
+    # reshape term_feature dataset in proper format to create seaborn heatmap
+    term_feature_df = df_range.pivot('term', 'jaccard', 'proteins')
+
+    sns.heatmap(term_feature_df, cmap="BuPu")
+  # create seaborn heatmap
+    plt.title(feature)
+    plt.savefig(cfg.data['data'] + 'heatmaps/range_' + feature + '.png')
+    plt.close()
 
 
 
