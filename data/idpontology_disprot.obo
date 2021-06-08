@@ -1,0 +1,1616 @@
+[Term]
+id: DO:00000
+name: Disorder function
+namespace: Disorder function
+
+[Term]
+id: DO:00001
+name: Entropic chain
+namespace: Disorder function
+def: "Directly function via disorder." []
+is_a: DO:00000 ! Disorder function
+disjoint_from: DO:00008 ! Molecular recognition assembler
+disjoint_from: DO:00013 ! Molecular recognition scavenger
+disjoint_from: DO:00017 ! Molecular recognition effector
+disjoint_from: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00035 ! Molecular recognition chaperone
+disjoint_from: DO:00040 ! Biological condensation
+
+[Term]
+id: DO:00002
+name: Flexible linker/spacer
+namespace: Disorder function
+def: "Provides separation and permits movement between adjacent binding elements/domains." []
+synonym: "flexible linker" EXACT []
+synonym: "flexible spacer" EXACT []
+is_a: DO:00001 ! Entropic chain
+disjoint_from: DO:00003 ! Entropic bristle
+disjoint_from: DO:00004 ! Entropic clock
+disjoint_from: DO:00005 ! Entropic spring
+disjoint_from: DO:00006 ! Structural mortar
+disjoint_from: DO:00007 ! Self-transport through channel
+
+[Term]
+id: DO:00003
+name: Entropic bristle
+namespace: Disorder function
+def: "A disordered region that creates a zone of exclusion by its entropic movement resisting compression." []
+is_a: DO:00001 ! Entropic chain
+disjoint_from: DO:00002 ! Flexible linker/spacer
+disjoint_from: DO:00004 ! Entropic clock
+disjoint_from: DO:00005 ! Entropic spring
+disjoint_from: DO:00006 ! Structural mortar
+disjoint_from: DO:00007 ! Self-transport through channel
+
+[Term]
+id: DO:00004
+name: Entropic clock
+namespace: Disorder function
+def: "Timing mechanism arising from random search by a binding element." []
+is_a: DO:00001 ! Entropic chain
+disjoint_from: DO:00002 ! Flexible linker/spacer
+disjoint_from: DO:00003 ! Entropic bristle
+disjoint_from: DO:00005 ! Entropic spring
+disjoint_from: DO:00006 ! Structural mortar
+disjoint_from: DO:00007 ! Self-transport through channel
+
+[Term]
+id: DO:00005
+name: Entropic spring
+namespace: Disorder function
+def: "Generation of restoring force resulting from randomization of bond torsion angles upon stretching." []
+is_a: DO:00001 ! Entropic chain
+disjoint_from: DO:00002 ! Flexible linker/spacer
+disjoint_from: DO:00003 ! Entropic bristle
+disjoint_from: DO:00004 ! Entropic clock
+disjoint_from: DO:00006 ! Structural mortar
+disjoint_from: DO:00007 ! Self-transport through channel
+
+[Term]
+id: DO:00006
+name: Structural mortar
+namespace: Disorder function
+def: "Ribosomal proteins that fill the gaps and cracks of rRNA." []
+is_a: DO:00001 ! Entropic chain
+disjoint_from: DO:00002 ! Flexible linker/spacer
+disjoint_from: DO:00003 ! Entropic bristle
+disjoint_from: DO:00004 ! Entropic clock
+disjoint_from: DO:00005 ! Entropic spring
+disjoint_from: DO:00007 ! Self-transport through channel
+
+[Term]
+id: DO:00007
+name: Self-transport through channel
+namespace: Disorder function
+def: "Allows movement of proteins through membrane channels." []
+is_a: DO:00001 ! Entropic chain
+disjoint_from: DO:00002 ! Flexible linker/spacer
+disjoint_from: DO:00003 ! Entropic bristle
+disjoint_from: DO:00004 ! Entropic clock
+disjoint_from: DO:00005 ! Entropic spring
+disjoint_from: DO:00006 ! Structural mortar
+
+[Term]
+id: DO:00008
+name: Molecular recognition assembler
+namespace: Disorder function
+def: "Assemble complexes and target activity." []
+is_a: DO:00000 ! Disorder function
+disjoint_from: DO:00001 ! Entropic chain
+disjoint_from: DO:00013 ! Molecular recognition scavenger
+disjoint_from: DO:00017 ! Molecular recognition effector
+disjoint_from: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00035 ! Molecular recognition chaperone
+disjoint_from: DO:00040 ! Biological condensation
+
+[Term]
+id: DO:00009
+name: Assembler
+namespace: Disorder function
+def: "Binding more than one partner to assemble a functional complex." []
+is_a: DO:00008 ! Molecular recognition assembler
+disjoint_from: DO:00010 ! Localization
+
+[Term]
+id: DO:00010
+name: Localization
+namespace: Disorder function
+def: "Changing the location of the protein." []
+is_a: DO:00008 ! Molecular recognition assembler
+disjoint_from: DO:00009 ! Assembler
+
+[Term]
+id: DO:00011
+name: Targeting
+namespace: Disorder function
+def: "Localizing the protein to  particular place in the cell." []
+is_a: DO:00010 ! Localization
+disjoint_from: DO:00012 ! Tethering
+
+[Term]
+id: DO:00012
+name: Tethering
+namespace: Disorder function
+def: "Reaching out to tether/capture a partner (\"fly casting\")." []
+is_a: DO:00010 ! Localization
+disjoint_from: DO:00011 ! Targeting
+
+[Term]
+id: DO:00013
+name: Molecular recognition scavenger
+namespace: Disorder function
+def: "Store and/or neutralize small ligands." []
+synonym: "scavenger" EXACT []
+is_a: DO:00000 ! Disorder function
+disjoint_from: DO:00001 ! Entropic chain
+disjoint_from: DO:00008 ! Molecular recognition assembler
+disjoint_from: DO:00017 ! Molecular recognition effector
+disjoint_from: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00035 ! Molecular recognition chaperone
+disjoint_from: DO:00040 ! Biological condensation
+
+[Term]
+id: DO:00014
+name: Neutralization of toxic molecules
+namespace: Disorder function
+def: "Binds toxic organic molecules to neutralize them." []
+is_a: DO:00013 ! Molecular recognition scavenger
+disjoint_from: DO:00015 ! Metal binding
+disjoint_from: DO:00016 ! Water storage
+
+[Term]
+id: DO:00015
+name: Metal binding
+namespace: Disorder function
+def: "Binds metal ions and or metal complexes for storage and/or delivery." []
+synonym: "metal sponge" EXACT []
+is_a: DO:00013 ! Molecular recognition scavenger
+disjoint_from: DO:00014 ! Neutralization of toxic molecules
+disjoint_from: DO:00016 ! Water storage
+
+[Term]
+id: DO:00016
+name: Water storage
+namespace: Disorder function
+def: "Due to high hydration potential retains water in cells." []
+is_a: DO:00013 ! Molecular recognition scavenger
+disjoint_from: DO:00014 ! Neutralization of toxic molecules
+disjoint_from: DO:00015 ! Metal binding
+
+[Term]
+id: DO:00017
+name: Molecular recognition effector
+namespace: Disorder function
+def: "Modulate the activity of partner molecule." []
+is_a: DO:00000 ! Disorder function
+disjoint_from: DO:00001 ! Entropic chain
+disjoint_from: DO:00008 ! Molecular recognition assembler
+disjoint_from: DO:00013 ! Molecular recognition scavenger
+disjoint_from: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00035 ! Molecular recognition chaperone
+disjoint_from: DO:00040 ! Biological condensation
+
+[Term]
+id: DO:00018
+name: Inhibitor
+namespace: Disorder function
+def: "Binding a partner to inhibit its activity." []
+is_a: DO:00017 ! Molecular recognition effector
+disjoint_from: DO:00020 ! Disassembler
+disjoint_from: DO:00021 ! Activator
+disjoint_from: DO:00022 ! DNA bending
+disjoint_from: DO:00023 ! DNA unwinding
+
+[Term]
+id: DO:00019
+name: Cis-regulatory element
+namespace: Disorder function
+def: "Short disordered regions binding to and regulating the activity of adjacent domains." []
+is_a: DO:00018 ! Inhibitor
+
+[Term]
+id: DO:00020
+name: Disassembler
+namespace: Disorder function
+def: "Binding a partner to prevent assembly or promote disassembly of complex." []
+is_a: DO:00017 ! Molecular recognition effector
+disjoint_from: DO:00018 ! Inhibitor
+disjoint_from: DO:00021 ! Activator
+disjoint_from: DO:00022 ! DNA bending
+disjoint_from: DO:00023 ! DNA unwinding
+
+[Term]
+id: DO:00021
+name: Activator
+namespace: Disorder function
+def: "Binding a partner to increase its activity." []
+is_a: DO:00017 ! Molecular recognition effector
+disjoint_from: DO:00018 ! Inhibitor
+disjoint_from: DO:00020 ! Disassembler
+disjoint_from: DO:00022 ! DNA bending
+disjoint_from: DO:00023 ! DNA unwinding
+
+[Term]
+id: DO:00022
+name: DNA bending
+namespace: Disorder function
+def: "Mediates DNA bending." []
+is_a: DO:00017 ! Molecular recognition effector
+disjoint_from: DO:00018 ! Inhibitor
+disjoint_from: DO:00020 ! Disassembler
+disjoint_from: DO:00021 ! Activator
+disjoint_from: DO:00023 ! DNA unwinding
+
+[Term]
+id: DO:00023
+name: DNA unwinding
+namespace: Disorder function
+def: "Promotes the unwinding of DNA." []
+is_a: DO:00017 ! Molecular recognition effector
+disjoint_from: DO:00018 ! Inhibitor
+disjoint_from: DO:00020 ! Disassembler
+disjoint_from: DO:00021 ! Activator
+disjoint_from: DO:00022 ! DNA bending
+
+[Term]
+id: DO:00024
+name: Molecular recognition display site
+namespace: Disorder function
+def: "Targeting post-translational modification." []
+is_a: DO:00000 ! Disorder function
+disjoint_from: DO:00001 ! Entropic chain
+disjoint_from: DO:00008 ! Molecular recognition assembler
+disjoint_from: DO:00013 ! Molecular recognition scavenger
+disjoint_from: DO:00017 ! Molecular recognition effector
+disjoint_from: DO:00035 ! Molecular recognition chaperone
+disjoint_from: DO:00040 ! Biological condensation
+
+[Term]
+id: DO:00025
+name: Regulation of phosphorylation
+namespace: Disorder function
+def: "Guides the addition of a phosphate to the protein." []
+synonym: "protein phosphorylation" EXACT []
+xref: GO:0006468
+is_a: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00026 ! Regulation of acetylation
+disjoint_from: DO:00027 ! Regulation of methylation
+disjoint_from: DO:00028 ! Regulation of glycosylation
+disjoint_from: DO:00029 ! Regulation of ubiquitination
+disjoint_from: DO:00030 ! Regulation of fatty acylation
+disjoint_from: DO:00033 ! Regulation of limited proteolysis
+disjoint_from: DO:00034 ! Regulation of ADP-ribosylation
+
+[Term]
+id: DO:00026
+name: Regulation of acetylation
+namespace: Disorder function
+def: "Guides the addition of an acetyl group to the protein." []
+synonym: "protein acetylation" EXACT []
+xref: GO:0006473
+is_a: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00025 ! Regulation of phosphorylation
+disjoint_from: DO:00027 ! Regulation of methylation
+disjoint_from: DO:00028 ! Regulation of glycosylation
+disjoint_from: DO:00029 ! Regulation of ubiquitination
+disjoint_from: DO:00030 ! Regulation of fatty acylation
+disjoint_from: DO:00033 ! Regulation of limited proteolysis
+disjoint_from: DO:00034 ! Regulation of ADP-ribosylation
+
+[Term]
+id: DO:00027
+name: Regulation of methylation
+namespace: Disorder function
+def: "Guides the addition of a methyl group to the protein." []
+synonym: "protein methylation" EXACT []
+xref: GO:0006479
+is_a: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00025 ! Regulation of phosphorylation
+disjoint_from: DO:00026 ! Regulation of acetylation
+disjoint_from: DO:00028 ! Regulation of glycosylation
+disjoint_from: DO:00029 ! Regulation of ubiquitination
+disjoint_from: DO:00030 ! Regulation of fatty acylation
+disjoint_from: DO:00033 ! Regulation of limited proteolysis
+disjoint_from: DO:00034 ! Regulation of ADP-ribosylation
+
+[Term]
+id: DO:00028
+name: Regulation of glycosylation
+namespace: Disorder function
+def: "Guides the addition of a sugar, such as a glycan, during chemical modification of the protein." []
+synonym: "protein glycosylation" EXACT []
+xref: GO:0006486
+is_a: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00025 ! Regulation of phosphorylation
+disjoint_from: DO:00026 ! Regulation of acetylation
+disjoint_from: DO:00027 ! Regulation of methylation
+disjoint_from: DO:00029 ! Regulation of ubiquitination
+disjoint_from: DO:00030 ! Regulation of fatty acylation
+disjoint_from: DO:00033 ! Regulation of limited proteolysis
+disjoint_from: DO:00034 ! Regulation of ADP-ribosylation
+
+[Term]
+id: DO:00029
+name: Regulation of ubiquitination
+namespace: Disorder function
+def: "Guides the addition of a ubiquitin moiety for regulating the function and/or degradation of the protein." []
+synonym: "protein ubiquitination" EXACT []
+xref: GO:0016567
+is_a: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00025 ! Regulation of phosphorylation
+disjoint_from: DO:00026 ! Regulation of acetylation
+disjoint_from: DO:00027 ! Regulation of methylation
+disjoint_from: DO:00028 ! Regulation of glycosylation
+disjoint_from: DO:00030 ! Regulation of fatty acylation
+disjoint_from: DO:00033 ! Regulation of limited proteolysis
+disjoint_from: DO:00034 ! Regulation of ADP-ribosylation
+
+[Term]
+id: DO:00030
+name: Regulation of fatty acylation
+namespace: Disorder function
+def: "Guides the addition of a fatty acyl group during chemical modification of the protein." []
+is_a: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00025 ! Regulation of phosphorylation
+disjoint_from: DO:00026 ! Regulation of acetylation
+disjoint_from: DO:00027 ! Regulation of methylation
+disjoint_from: DO:00028 ! Regulation of glycosylation
+disjoint_from: DO:00029 ! Regulation of ubiquitination
+disjoint_from: DO:00033 ! Regulation of limited proteolysis
+disjoint_from: DO:00034 ! Regulation of ADP-ribosylation
+
+[Term]
+id: DO:00031
+name: Regulation of myristoylation
+namespace: Disorder function
+def: "Guides the addition of a myristoyl group during chemical modification of the protein." []
+synonym: "protein myristoylation" EXACT []
+xref: GO:0018377
+is_a: DO:00030 ! Regulation of fatty acylation
+disjoint_from: DO:00032 ! Regulation of palmitoylation
+
+[Term]
+id: DO:00032
+name: Regulation of palmitoylation
+namespace: Disorder function
+def: "Guides the addition of a palmitoyl group during chemical modification of the protein." []
+synonym: "protein palmitoylation" EXACT []
+xref: GO:0018345
+is_a: DO:00030 ! Regulation of fatty acylation
+disjoint_from: DO:00031 ! Regulation of myristoylation
+
+[Term]
+id: DO:00033
+name: Regulation of limited proteolysis
+namespace: Disorder function
+def: "Guides the regulatory cleavage of the polypeptide chain." []
+synonym: "proteolysis" EXACT []
+xref: GO:0006508
+is_a: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00025 ! Regulation of phosphorylation
+disjoint_from: DO:00026 ! Regulation of acetylation
+disjoint_from: DO:00027 ! Regulation of methylation
+disjoint_from: DO:00028 ! Regulation of glycosylation
+disjoint_from: DO:00029 ! Regulation of ubiquitination
+disjoint_from: DO:00030 ! Regulation of fatty acylation
+disjoint_from: DO:00034 ! Regulation of ADP-ribosylation
+
+[Term]
+id: DO:00034
+name: Regulation of ADP-ribosylation
+namespace: Disorder function
+def: "Guides the addition of ADP-ribose moietie(s) to a protein, in cell signaling, DNA repair, gene regulation and apoptosis." []
+synonym: "protein ADP-ribosylation" EXACT []
+xref: GO:0006471
+is_a: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00025 ! Regulation of phosphorylation
+disjoint_from: DO:00026 ! Regulation of acetylation
+disjoint_from: DO:00027 ! Regulation of methylation
+disjoint_from: DO:00028 ! Regulation of glycosylation
+disjoint_from: DO:00029 ! Regulation of ubiquitination
+disjoint_from: DO:00030 ! Regulation of fatty acylation
+disjoint_from: DO:00033 ! Regulation of limited proteolysis
+
+[Term]
+id: DO:00035
+name: Molecular recognition chaperone
+namespace: Disorder function
+def: "Assist the folding of protein and/or RNA." []
+synonym: "chaperone" EXACT []
+is_a: DO:00000 ! Disorder function
+disjoint_from: DO:00001 ! Entropic chain
+disjoint_from: DO:00008 ! Molecular recognition assembler
+disjoint_from: DO:00013 ! Molecular recognition scavenger
+disjoint_from: DO:00017 ! Molecular recognition effector
+disjoint_from: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00040 ! Biological condensation
+
+[Term]
+id: DO:00036
+name: Protein detergent
+namespace: Disorder function
+def: "Binds to hydrophobic groups, thus making them more soluble." []
+synonym: "solvate layer" EXACT []
+is_a: DO:00035 ! Molecular recognition chaperone
+disjoint_from: DO:00037 ! Space filling
+disjoint_from: DO:00038 ! Entropic exclusion
+disjoint_from: DO:00039 ! Entropy transfer
+
+[Term]
+id: DO:00037
+name: Space filling
+namespace: Disorder function
+def: "By a combination transient binding, exclusion by its entropic movement resisting compression." []
+is_a: DO:00035 ! Molecular recognition chaperone
+disjoint_from: DO:00036 ! Protein detergent
+disjoint_from: DO:00038 ! Entropic exclusion
+disjoint_from: DO:00039 ! Entropy transfer
+
+[Term]
+id: DO:00038
+name: Entropic exclusion
+namespace: Disorder function
+def: "Entropic bristle function embedded in a chaperone: a disordered region that creates a zone of exclusion preventing aggregation." []
+is_a: DO:00035 ! Molecular recognition chaperone
+disjoint_from: DO:00036 ! Protein detergent
+disjoint_from: DO:00037 ! Space filling
+disjoint_from: DO:00039 ! Entropy transfer
+
+[Term]
+id: DO:00039
+name: Entropy transfer
+namespace: Disorder function
+def: "Transiently interacts with misfolded client to increase its entropy thus enabling its folding." []
+is_a: DO:00035 ! Molecular recognition chaperone
+disjoint_from: DO:00036 ! Protein detergent
+disjoint_from: DO:00037 ! Space filling
+disjoint_from: DO:00038 ! Entropic exclusion
+
+[Term]
+id: DO:00040
+name: Biological condensation
+namespace: Disorder function
+def: "Protein undergoing a transition from a solution to a condensed phase, whether liquid, gel or aggregate." []
+is_a: DO:00000 ! Disorder function
+disjoint_from: DO:00001 ! Entropic chain
+disjoint_from: DO:00008 ! Molecular recognition assembler
+disjoint_from: DO:00013 ! Molecular recognition scavenger
+disjoint_from: DO:00017 ! Molecular recognition effector
+disjoint_from: DO:00024 ! Molecular recognition display site
+disjoint_from: DO:00035 ! Molecular recognition chaperone
+
+[Term]
+id: DO:00041
+name: Liquid-liquid phase separation
+namespace: Disorder function
+def: "Undergoes phase separation from a solution resulting in a dynamic \"liquid droplet\"." []
+synonym: "liquid demixing" EXACT []
+synonym: "phase separation" EXACT []
+synonym: "self-assembly" EXACT []
+is_a: DO:00040 ! Biological condensation
+disjoint_from: DO:00042 ! Hydrogel
+disjoint_from: DO:00043 ! Aggregate
+disjoint_from: DO:00044 ! Granule
+disjoint_from: DO:00045 ! Cellular puncta
+disjoint_from: DO:00046 ! Amyloid
+disjoint_from: DO:00047 ! Prion
+disjoint_from: DO:00048 ! Signaling complex
+
+[Term]
+id: DO:00042
+name: Hydrogel
+namespace: Disorder function
+def: "Undergoes phase separation from a solution or liquid droplet state into a hydrogel (by gelation), characterized by a reduced dynamics and a system-wide cross-linking network." []
+is_a: DO:00040 ! Biological condensation
+disjoint_from: DO:00041 ! Liquid-liquid phase separation
+disjoint_from: DO:00043 ! Aggregate
+disjoint_from: DO:00044 ! Granule
+disjoint_from: DO:00045 ! Cellular puncta
+disjoint_from: DO:00046 ! Amyloid
+disjoint_from: DO:00047 ! Prion
+disjoint_from: DO:00048 ! Signaling complex
+
+[Term]
+id: DO:00043
+name: Aggregate
+namespace: Disorder function
+def: "Undergoes phase separation from a solution or hydrogel state to a rigid (amorphous or fibrillar) solid state." []
+synonym: "aggregation" EXACT []
+is_a: DO:00040 ! Biological condensation
+disjoint_from: DO:00041 ! Liquid-liquid phase separation
+disjoint_from: DO:00042 ! Hydrogel
+disjoint_from: DO:00044 ! Granule
+disjoint_from: DO:00045 ! Cellular puncta
+disjoint_from: DO:00046 ! Amyloid
+disjoint_from: DO:00047 ! Prion
+disjoint_from: DO:00048 ! Signaling complex
+
+[Term]
+id: DO:00044
+name: Granule
+namespace: Disorder function
+def: "A cellular protein condensate, most often, but not necessarily in the aggregated state." []
+synonym: "inclusion body" EXACT []
+is_a: DO:00040 ! Biological condensation
+disjoint_from: DO:00041 ! Liquid-liquid phase separation
+disjoint_from: DO:00042 ! Hydrogel
+disjoint_from: DO:00043 ! Aggregate
+disjoint_from: DO:00045 ! Cellular puncta
+disjoint_from: DO:00046 ! Amyloid
+disjoint_from: DO:00047 ! Prion
+disjoint_from: DO:00048 ! Signaling complex
+
+[Term]
+id: DO:00045
+name: Cellular puncta
+namespace: Disorder function
+def: "A cellular condensate of not clearly defined material state (droplet or aggregate) mostly reported in cell-biological experiments." []
+is_a: DO:00040 ! Biological condensation
+disjoint_from: DO:00041 ! Liquid-liquid phase separation
+disjoint_from: DO:00042 ! Hydrogel
+disjoint_from: DO:00043 ! Aggregate
+disjoint_from: DO:00044 ! Granule
+disjoint_from: DO:00046 ! Amyloid
+disjoint_from: DO:00047 ! Prion
+disjoint_from: DO:00048 ! Signaling complex
+
+[Term]
+id: DO:00046
+name: Amyloid
+namespace: Disorder function
+def: "Physiological or pathological function encompassing the formation of a highly ordered fibrillar state dominated by cross-beta structure." []
+is_a: DO:00040 ! Biological condensation
+disjoint_from: DO:00041 ! Liquid-liquid phase separation
+disjoint_from: DO:00042 ! Hydrogel
+disjoint_from: DO:00043 ! Aggregate
+disjoint_from: DO:00044 ! Granule
+disjoint_from: DO:00045 ! Cellular puncta
+disjoint_from: DO:00047 ! Prion
+disjoint_from: DO:00048 ! Signaling complex
+
+[Term]
+id: DO:00047
+name: Prion
+namespace: Disorder function
+def: "Capable of undergoing autocatalytic, self-maintaining and transmissible conformational change that can form the basis of the non-genetic inheritance of a biological trait. Can be physiological or pathological. The structural correlate is often the formation of a self-seeding amyloid." []
+is_a: DO:00040 ! Biological condensation
+disjoint_from: DO:00041 ! Liquid-liquid phase separation
+disjoint_from: DO:00042 ! Hydrogel
+disjoint_from: DO:00043 ! Aggregate
+disjoint_from: DO:00044 ! Granule
+disjoint_from: DO:00045 ! Cellular puncta
+disjoint_from: DO:00046 ! Amyloid
+disjoint_from: DO:00048 ! Signaling complex
+
+[Term]
+id: DO:00048
+name: Signaling complex
+namespace: Disorder function
+def: "Function through the formation of large heterologous signaling complex of loosely defined stoichiometry." []
+synonym: "signaling body" EXACT []
+synonym: "signalosome" EXACT []
+is_a: DO:00040 ! Biological condensation
+disjoint_from: DO:00041 ! Liquid-liquid phase separation
+disjoint_from: DO:00042 ! Hydrogel
+disjoint_from: DO:00043 ! Aggregate
+disjoint_from: DO:00044 ! Granule
+disjoint_from: DO:00045 ! Cellular puncta
+disjoint_from: DO:00046 ! Amyloid
+disjoint_from: DO:00047 ! Prion
+
+[Term]
+id: DO:00049
+name: Structural transition
+namespace: Structural transition
+def: "Molecular transition necessary for function." []
+synonym: "secondary structure population" EXACT []
+
+[Term]
+id: DO:00050
+name: Disorder to order
+namespace: Structural transition
+synonym: "disorder-to-order" EXACT []
+is_a: DO:00049 ! Structural transition
+disjoint_from: DO:00056 ! Order to disorder
+
+[Term]
+id: DO:00051
+name: Disorder to molten globule
+namespace: Structural transition
+synonym: "disorder to molten-globule" EXACT []
+synonym: "disorder-to-molten-globule" EXACT []
+is_a: DO:00050 ! Disorder to order
+disjoint_from: DO:00052 ! Disorder to pre-molten globule
+disjoint_from: DO:00053 ! Molten globule to order
+disjoint_from: DO:00054 ! Molten globule to pre-molten globule
+disjoint_from: DO:00055 ! Pre-molten globule to order
+
+[Term]
+id: DO:00052
+name: Disorder to pre-molten globule
+namespace: Structural transition
+is_a: DO:00050 ! Disorder to order
+disjoint_from: DO:00051 ! Disorder to molten globule
+disjoint_from: DO:00053 ! Molten globule to order
+disjoint_from: DO:00054 ! Molten globule to pre-molten globule
+disjoint_from: DO:00055 ! Pre-molten globule to order
+
+[Term]
+id: DO:00053
+name: Molten globule to order
+namespace: Structural transition
+synonym: "molten-globule to order" EXACT []
+synonym: "molten-globule-to-order" EXACT []
+is_a: DO:00050 ! Disorder to order
+disjoint_from: DO:00051 ! Disorder to molten globule
+disjoint_from: DO:00052 ! Disorder to pre-molten globule
+disjoint_from: DO:00054 ! Molten globule to pre-molten globule
+disjoint_from: DO:00055 ! Pre-molten globule to order
+
+[Term]
+id: DO:00054
+name: Molten globule to pre-molten globule
+namespace: Structural transition
+is_a: DO:00050 ! Disorder to order
+disjoint_from: DO:00051 ! Disorder to molten globule
+disjoint_from: DO:00052 ! Disorder to pre-molten globule
+disjoint_from: DO:00053 ! Molten globule to order
+disjoint_from: DO:00055 ! Pre-molten globule to order
+
+[Term]
+id: DO:00055
+name: Pre-molten globule to order
+namespace: Structural transition
+is_a: DO:00050 ! Disorder to order
+disjoint_from: DO:00051 ! Disorder to molten globule
+disjoint_from: DO:00052 ! Disorder to pre-molten globule
+disjoint_from: DO:00053 ! Molten globule to order
+disjoint_from: DO:00054 ! Molten globule to pre-molten globule
+
+[Term]
+id: DO:00056
+name: Order to disorder
+namespace: Structural transition
+synonym: "order-to-disorder" EXACT []
+is_a: DO:00049 ! Structural transition
+disjoint_from: DO:00050 ! Disorder to order
+
+[Term]
+id: DO:00057
+name: Order to molten globule
+namespace: Structural transition
+synonym: "order to molten-globule" EXACT []
+synonym: "order-to-molten-globule" EXACT []
+is_a: DO:00056 ! Order to disorder
+disjoint_from: DO:00058 ! Order to pre-molten globule
+disjoint_from: DO:00059 ! Pre-molten globule to disorder
+disjoint_from: DO:00060 ! Pre-molten globule to molten globule
+disjoint_from: DO:00061 ! Molten globule to disorder
+
+[Term]
+id: DO:00058
+name: Order to pre-molten globule
+namespace: Structural transition
+is_a: DO:00056 ! Order to disorder
+disjoint_from: DO:00057 ! Order to molten globule
+disjoint_from: DO:00059 ! Pre-molten globule to disorder
+disjoint_from: DO:00060 ! Pre-molten globule to molten globule
+disjoint_from: DO:00061 ! Molten globule to disorder
+
+[Term]
+id: DO:00059
+name: Pre-molten globule to disorder
+namespace: Structural transition
+is_a: DO:00056 ! Order to disorder
+disjoint_from: DO:00057 ! Order to molten globule
+disjoint_from: DO:00058 ! Order to pre-molten globule
+disjoint_from: DO:00060 ! Pre-molten globule to molten globule
+disjoint_from: DO:00061 ! Molten globule to disorder
+
+[Term]
+id: DO:00060
+name: Pre-molten globule to molten globule
+namespace: Structural transition
+is_a: DO:00056 ! Order to disorder
+disjoint_from: DO:00057 ! Order to molten globule
+disjoint_from: DO:00058 ! Order to pre-molten globule
+disjoint_from: DO:00059 ! Pre-molten globule to disorder
+disjoint_from: DO:00061 ! Molten globule to disorder
+
+[Term]
+id: DO:00061
+name: Molten globule to disorder
+namespace: Structural transition
+synonym: "molten-globule to disorder" EXACT []
+synonym: "molten-globule-to-disorder" EXACT []
+is_a: DO:00056 ! Order to disorder
+disjoint_from: DO:00057 ! Order to molten globule
+disjoint_from: DO:00058 ! Order to pre-molten globule
+disjoint_from: DO:00059 ! Pre-molten globule to disorder
+disjoint_from: DO:00060 ! Pre-molten globule to molten globule
+
+[Term]
+id: DO:00062
+name: Interaction partner
+namespace: Interaction partner
+def: "Molecular partner recognized by the IDP/IDR." []
+
+[Term]
+id: DO:00063
+name: Protein binding
+namespace: Interaction partner
+synonym: "protein binding" EXACT []
+xref: GO:0005515
+is_a: DO:00062 ! Interaction partner
+disjoint_from: DO:00064 ! Nucleic acid binding
+disjoint_from: DO:00071 ! Lipid binding
+disjoint_from: DO:00072 ! Ion binding
+disjoint_from: DO:00074 ! Small molecule binding
+
+[Term]
+id: DO:00064
+name: Nucleic acid binding
+namespace: Interaction partner
+is_a: DO:00062 ! Interaction partner
+disjoint_from: DO:00063 ! Protein binding
+disjoint_from: DO:00071 ! Lipid binding
+disjoint_from: DO:00072 ! Ion binding
+disjoint_from: DO:00074 ! Small molecule binding
+
+[Term]
+id: DO:00065
+name: DNA binding
+namespace: Interaction partner
+synonym: "DNA binding" EXACT []
+xref: GO:0003677
+is_a: DO:00064 ! Nucleic acid binding
+disjoint_from: DO:00066 ! RNA binding
+
+[Term]
+id: DO:00066
+name: RNA binding
+namespace: Interaction partner
+synonym: "RNA binding" EXACT []
+xref: GO:0003723
+is_a: DO:00064 ! Nucleic acid binding
+disjoint_from: DO:00065 ! DNA binding
+
+[Term]
+id: DO:00067
+name: mRNA binding
+namespace: Interaction partner
+synonym: "mRNA binding" EXACT []
+xref: GO:0003729
+is_a: DO:00066 ! RNA binding
+disjoint_from: DO:00068 ! rRNA binding
+disjoint_from: DO:00069 ! tRNA binding
+disjoint_from: DO:00070 ! Regulatory region RNA binding
+
+[Term]
+id: DO:00068
+name: rRNA binding
+namespace: Interaction partner
+synonym: "rRNA binding" EXACT []
+xref: GO:0019843
+is_a: DO:00066 ! RNA binding
+disjoint_from: DO:00067 ! mRNA binding
+disjoint_from: DO:00069 ! tRNA binding
+disjoint_from: DO:00070 ! Regulatory region RNA binding
+
+[Term]
+id: DO:00069
+name: tRNA binding
+namespace: Interaction partner
+synonym: "tRNA binding" EXACT []
+xref: GO:0000049
+is_a: DO:00066 ! RNA binding
+disjoint_from: DO:00067 ! mRNA binding
+disjoint_from: DO:00068 ! rRNA binding
+disjoint_from: DO:00070 ! Regulatory region RNA binding
+
+[Term]
+id: DO:00070
+name: Regulatory region RNA binding
+namespace: Interaction partner
+synonym: "regulatory region RNA binding" EXACT []
+xref: GO:0001069
+is_a: DO:00066 ! RNA binding
+disjoint_from: DO:00067 ! mRNA binding
+disjoint_from: DO:00068 ! rRNA binding
+disjoint_from: DO:00069 ! tRNA binding
+
+[Term]
+id: DO:00071
+name: Lipid binding
+namespace: Interaction partner
+synonym: "lipid binding" EXACT []
+xref: GO:0001069
+is_a: DO:00062 ! Interaction partner
+disjoint_from: DO:00063 ! Protein binding
+disjoint_from: DO:00064 ! Nucleic acid binding
+disjoint_from: DO:00072 ! Ion binding
+disjoint_from: DO:00074 ! Small molecule binding
+
+[Term]
+id: DO:00072
+name: Ion binding
+namespace: Interaction partner
+synonym: "ion binding" EXACT []
+xref: GO:0043167
+is_a: DO:00062 ! Interaction partner
+disjoint_from: DO:00063 ! Protein binding
+disjoint_from: DO:00064 ! Nucleic acid binding
+disjoint_from: DO:00071 ! Lipid binding
+disjoint_from: DO:00074 ! Small molecule binding
+
+[Term]
+id: DO:00073
+name: Metal ion binding
+namespace: Interaction partner
+synonym: "metal ion binding" EXACT []
+xref: GO:0046872
+is_a: DO:00072 ! Ion binding
+
+[Term]
+id: DO:00074
+name: Small molecule binding
+namespace: Interaction partner
+synonym: "small molecule binding" EXACT []
+xref: GO:0036094
+is_a: DO:00062 ! Interaction partner
+disjoint_from: DO:00063 ! Protein binding
+disjoint_from: DO:00064 ! Nucleic acid binding
+disjoint_from: DO:00071 ! Lipid binding
+disjoint_from: DO:00072 ! Ion binding
+
+[Term]
+id: DO:00075
+name: Structural state
+namespace: Structural state
+
+[Term]
+id: DO:00076
+name: Disorder
+namespace: Structural state
+def: "A non-compact state in which atoms lack a fixed or ordered three-dimensional structure." []
+is_a: DO:00075 ! Structural state
+disjoint_from: DO:00079 ! Order
+
+[Term]
+id: DO:00077
+name: Molten globule
+namespace: Structural state
+def: "A compact state, with native secondary structure but lacking specific native tertiary interactions." []
+synonym: "MG" EXACT []
+is_a: DO:00076 ! Disorder
+disjoint_from: DO:00078 ! Pre-molten globule
+
+[Term]
+id: DO:00078
+name: Pre-molten globule
+namespace: Structural state
+def: "A condensed but not compact state, with residual secondary structure, describing many native and non-native conformations in rapid equilibrium." []
+synonym: "PMG" EXACT []
+is_a: DO:00076 ! Disorder
+disjoint_from: DO:00077 ! Molten globule
+
+[Term]
+id: DO:00079
+name: Order
+namespace: Structural state
+def: "A compact state in which atoms have a stable three-dimensional structure." []
+is_a: DO:00075 ! Structural state
+disjoint_from: DO:00076 ! Disorder
+
+[Term]
+id: DO:00080
+name: Detection method
+namespace: Detection method
+
+[Term]
+id: DO:00081
+name: Analytical chemistry
+namespace: Detection method
+def: "Separation, identification or quantification about protein composition and structure." []
+synonym: "ANALCHEM" EXACT []
+is_a: DO:00080 ! Detection method
+disjoint_from: DO:00091 ! Thermal analysis
+disjoint_from: DO:00094 ! Optical analysis
+disjoint_from: DO:00110 ! Spectrometry
+disjoint_from: DO:00122 ! Scattering
+disjoint_from: DO:00127 ! Crystallography
+
+[Term]
+id: DO:00082
+name: Analytical ultracentrifugation
+namespace: Detection method
+def: "Analysis of real-time sedimentation of proteins to estimate shape and molecular weight, determine hydrodynamic and thermodynamic parameters and monitor conformational changes." []
+synonym: "AU" EXACT []
+is_a: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00083 ! Immunochemistry
+disjoint_from: DO:00084 ! Radio-labeled enzyme activity assay
+disjoint_from: DO:00085 ! Sensitivity to proteolysis
+disjoint_from: DO:00086 ! Sodium dodecyl sulfate polyacrylamide gel electrophoresis
+disjoint_from: DO:00087 ! Size exclusion/gel filtration chromatography
+disjoint_from: DO:00088 ! Stability at pH extremes
+disjoint_from: DO:00089 ! Stability at thermal extremes
+disjoint_from: DO:00090 ! Viscometry
+
+[Term]
+id: DO:00083
+name: Immunochemistry
+namespace: Detection method
+def: "Study of the nature, functions and interactions relative to the immune system, including conformational antibodies specific for the secondary or tertiary structure and thus useful to inspect the structural state of a protein." []
+synonym: "IMMUNO" EXACT []
+is_a: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00082 ! Analytical ultracentrifugation
+disjoint_from: DO:00084 ! Radio-labeled enzyme activity assay
+disjoint_from: DO:00085 ! Sensitivity to proteolysis
+disjoint_from: DO:00086 ! Sodium dodecyl sulfate polyacrylamide gel electrophoresis
+disjoint_from: DO:00087 ! Size exclusion/gel filtration chromatography
+disjoint_from: DO:00088 ! Stability at pH extremes
+disjoint_from: DO:00089 ! Stability at thermal extremes
+disjoint_from: DO:00090 ! Viscometry
+
+[Term]
+id: DO:00084
+name: Radio-labeled enzyme activity assay
+namespace: Detection method
+def: "Detection of enzymatic activity using radio-labelled proteins or substrates." []
+synonym: "RAA" EXACT []
+is_a: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00082 ! Analytical ultracentrifugation
+disjoint_from: DO:00083 ! Immunochemistry
+disjoint_from: DO:00085 ! Sensitivity to proteolysis
+disjoint_from: DO:00086 ! Sodium dodecyl sulfate polyacrylamide gel electrophoresis
+disjoint_from: DO:00087 ! Size exclusion/gel filtration chromatography
+disjoint_from: DO:00088 ! Stability at pH extremes
+disjoint_from: DO:00089 ! Stability at thermal extremes
+disjoint_from: DO:00090 ! Viscometry
+
+[Term]
+id: DO:00085
+name: Sensitivity to proteolysis
+namespace: Detection method
+def: "Limited proteolysis experiments to probe enhanced backbone flexibility and other conformational features of proteins." []
+synonym: "SP" EXACT []
+is_a: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00082 ! Analytical ultracentrifugation
+disjoint_from: DO:00083 ! Immunochemistry
+disjoint_from: DO:00084 ! Radio-labeled enzyme activity assay
+disjoint_from: DO:00086 ! Sodium dodecyl sulfate polyacrylamide gel electrophoresis
+disjoint_from: DO:00087 ! Size exclusion/gel filtration chromatography
+disjoint_from: DO:00088 ! Stability at pH extremes
+disjoint_from: DO:00089 ! Stability at thermal extremes
+disjoint_from: DO:00090 ! Viscometry
+
+[Term]
+id: DO:00086
+name: Sodium dodecyl sulfate polyacrylamide gel electrophoresis
+namespace: Detection method
+def: "Protein separation by mass in denaturating condition. Aberrant mobility on SDS-PAGE gels suggests protein intrinsic disorder." []
+synonym: "aberrant SDS-PAGE" EXACT []
+synonym: "anomalous SDS-PAGE" EXACT []
+synonym: "SDSPAGE" EXACT []
+is_a: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00082 ! Analytical ultracentrifugation
+disjoint_from: DO:00083 ! Immunochemistry
+disjoint_from: DO:00084 ! Radio-labeled enzyme activity assay
+disjoint_from: DO:00085 ! Sensitivity to proteolysis
+disjoint_from: DO:00087 ! Size exclusion/gel filtration chromatography
+disjoint_from: DO:00088 ! Stability at pH extremes
+disjoint_from: DO:00089 ! Stability at thermal extremes
+disjoint_from: DO:00090 ! Viscometry
+
+[Term]
+id: DO:00087
+name: Size exclusion/gel filtration chromatography
+namespace: Detection method
+def: "Protein separation by mass and hydrodynamic volumes in native condition." []
+synonym: "gel filtration chromatography" EXACT []
+synonym: "SEC" EXACT []
+synonym: "Size exclusion chromatography" EXACT []
+synonym: "Size-exclusion chromatography" EXACT []
+is_a: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00082 ! Analytical ultracentrifugation
+disjoint_from: DO:00083 ! Immunochemistry
+disjoint_from: DO:00084 ! Radio-labeled enzyme activity assay
+disjoint_from: DO:00085 ! Sensitivity to proteolysis
+disjoint_from: DO:00086 ! Sodium dodecyl sulfate polyacrylamide gel electrophoresis
+disjoint_from: DO:00088 ! Stability at pH extremes
+disjoint_from: DO:00089 ! Stability at thermal extremes
+disjoint_from: DO:00090 ! Viscometry
+
+[Term]
+id: DO:00088
+name: Stability at pH extremes
+namespace: Detection method
+def: "Structural changes (folding/unfolding, aggregation, precipitation) at extreme pH values due to residue composition." []
+synonym: "PH" EXACT []
+is_a: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00082 ! Analytical ultracentrifugation
+disjoint_from: DO:00083 ! Immunochemistry
+disjoint_from: DO:00084 ! Radio-labeled enzyme activity assay
+disjoint_from: DO:00085 ! Sensitivity to proteolysis
+disjoint_from: DO:00086 ! Sodium dodecyl sulfate polyacrylamide gel electrophoresis
+disjoint_from: DO:00087 ! Size exclusion/gel filtration chromatography
+disjoint_from: DO:00089 ! Stability at thermal extremes
+disjoint_from: DO:00090 ! Viscometry
+
+[Term]
+id: DO:00089
+name: Stability at thermal extremes
+namespace: Detection method
+def: "Structural changes (folding/unfolding, aggregation, precipitation) at extreme temperature values due to residue composition." []
+synonym: "TEMP" EXACT []
+is_a: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00082 ! Analytical ultracentrifugation
+disjoint_from: DO:00083 ! Immunochemistry
+disjoint_from: DO:00084 ! Radio-labeled enzyme activity assay
+disjoint_from: DO:00085 ! Sensitivity to proteolysis
+disjoint_from: DO:00086 ! Sodium dodecyl sulfate polyacrylamide gel electrophoresis
+disjoint_from: DO:00087 ! Size exclusion/gel filtration chromatography
+disjoint_from: DO:00088 ! Stability at pH extremes
+disjoint_from: DO:00090 ! Viscometry
+
+[Term]
+id: DO:00090
+name: Viscometry
+namespace: Detection method
+def: "Study of protein weight, shape and conformation by its resistance to flow under an applied force." []
+synonym: "VISCO" EXACT []
+is_a: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00082 ! Analytical ultracentrifugation
+disjoint_from: DO:00083 ! Immunochemistry
+disjoint_from: DO:00084 ! Radio-labeled enzyme activity assay
+disjoint_from: DO:00085 ! Sensitivity to proteolysis
+disjoint_from: DO:00086 ! Sodium dodecyl sulfate polyacrylamide gel electrophoresis
+disjoint_from: DO:00087 ! Size exclusion/gel filtration chromatography
+disjoint_from: DO:00088 ! Stability at pH extremes
+disjoint_from: DO:00089 ! Stability at thermal extremes
+
+[Term]
+id: DO:00091
+name: Thermal analysis
+namespace: Detection method
+def: "Study of structural changes with temperature." []
+synonym: "THERMAL" EXACT []
+is_a: DO:00080 ! Detection method
+disjoint_from: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00094 ! Optical analysis
+disjoint_from: DO:00110 ! Spectrometry
+disjoint_from: DO:00122 ! Scattering
+disjoint_from: DO:00127 ! Crystallography
+
+[Term]
+id: DO:00092
+name: Differential scanning calorimetry
+namespace: Detection method
+def: "Folding analysis based on measurement of change in heat capacity upon heating/cooling of proteins." []
+synonym: "differential scanning calorimetry" EXACT []
+synonym: "DSC" EXACT []
+xref: MI:1311
+is_a: DO:00091 ! Thermal analysis
+disjoint_from: DO:00093 ! Differential scanning fluorimetry thermal shift assay
+
+[Term]
+id: DO:00093
+name: Differential scanning fluorimetry thermal shift assay
+namespace: Detection method
+def: "Folding analysis based on measurement of change in heat capacity upon heating/cooling of proteins, with addition of an extrinsically fluorescent as probe of environment polarity." []
+synonym: "Differential scanning fluorimetry" EXACT []
+synonym: "DSF" EXACT []
+synonym: "thermal shift assay" EXACT []
+is_a: DO:00091 ! Thermal analysis
+disjoint_from: DO:00092 ! Differential scanning calorimetry
+
+[Term]
+id: DO:00094
+name: Optical analysis
+namespace: Detection method
+def: "Structural studies by optical methods." []
+synonym: "OPT" EXACT []
+is_a: DO:00080 ! Detection method
+disjoint_from: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00091 ! Thermal analysis
+disjoint_from: DO:00110 ! Spectrometry
+disjoint_from: DO:00122 ! Scattering
+disjoint_from: DO:00127 ! Crystallography
+
+[Term]
+id: DO:00095
+name: Circular dichroism
+namespace: Detection method
+def: "Assessment of conformational properties of proteins by differential absorption of left and right circularly polarized light." []
+synonym: "CD" EXACT []
+xref: MI:0016
+is_a: DO:00094 ! Optical analysis
+disjoint_from: DO:00099 ! Fluorescence
+disjoint_from: DO:00106 ! Microscopy
+disjoint_from: DO:00109 ! Optical rotatory dispersion
+
+[Term]
+id: DO:00096
+name: Circular dichroism spectroscopy far-UV
+namespace: Detection method
+def: "Circular dichroism on the far-UV region (190-230 nm) that scans absorbance of amide (peptide) bonds to estimate secondary structure content." []
+synonym: "FCD" EXACT []
+is_a: DO:00095 ! Circular dichroism
+disjoint_from: DO:00097 ! Circular dichroism spectroscopy near-UV
+disjoint_from: DO:00098 ! Synchrotron radiation circular dichroism
+
+[Term]
+id: DO:00097
+name: Circular dichroism spectroscopy near-UV
+namespace: Detection method
+def: "Circular dichroism on the near-UV region (250-350 nm) that scans absorbance of aromatic residues to estimate tertiary structure properties." []
+synonym: "NCD" EXACT []
+is_a: DO:00095 ! Circular dichroism
+disjoint_from: DO:00096 ! Circular dichroism spectroscopy far-UV
+disjoint_from: DO:00098 ! Synchrotron radiation circular dichroism
+
+[Term]
+id: DO:00098
+name: Synchrotron radiation circular dichroism
+namespace: Detection method
+def: "Circular dichroism using intense light from a synchrotron beam, providing more structural information by measuring at lower wavelengths." []
+synonym: "SRCD" EXACT []
+synonym: "synchrotron radiation circular dichroism" EXACT []
+is_a: DO:00095 ! Circular dichroism
+disjoint_from: DO:00096 ! Circular dichroism spectroscopy far-UV
+disjoint_from: DO:00097 ! Circular dichroism spectroscopy near-UV
+
+[Term]
+id: DO:00099
+name: Fluorescence
+namespace: Detection method
+def: "Detection of fluorescence emission." []
+synonym: "FLUO" EXACT []
+is_a: DO:00094 ! Optical analysis
+disjoint_from: DO:00095 ! Circular dichroism
+disjoint_from: DO:00106 ! Microscopy
+disjoint_from: DO:00109 ! Optical rotatory dispersion
+
+[Term]
+id: DO:00100
+name: Fluorescence intrinsic
+namespace: Detection method
+def: "Conformational analysis of proteins based on intensity and wavelength of maximal fluorescence of tryptophan (also possibly tyrosine and phenylalanine), dependent on solvent polarity, pH, presence of quenchers and other environmental factors." []
+synonym: "classical fluorescence spectroscopy" EXACT []
+synonym: "IFLUO" EXACT []
+synonym: "intrinsic fluorescence" EXACT []
+xref: MI:0017
+is_a: DO:00099 ! Fluorescence
+disjoint_from: DO:00101 ! Fluorescence polarization/anisotropy
+disjoint_from: DO:00102 ! Fluorescence resonance energy transfer
+disjoint_from: DO:00103 ! Fluorescent dynamic quenching
+disjoint_from: DO:00104 ! Fluorescent probes extrinsic fluorescence
+disjoint_from: DO:00105 ! Tryptophan triplet quenching
+
+[Term]
+id: DO:00101
+name: Fluorescence polarization/anisotropy
+namespace: Detection method
+def: "Conformational analysis of proteins based on change in fluorescent intensities of parallel and perpendicular polarization against the initial, excitation polarization, measured on internal or external chromophores." []
+synonym: "FLUOPA" EXACT []
+synonym: "fluorescence polarization spectroscopy" EXACT []
+xref: MI:0053
+is_a: DO:00099 ! Fluorescence
+disjoint_from: DO:00100 ! Fluorescence intrinsic
+disjoint_from: DO:00102 ! Fluorescence resonance energy transfer
+disjoint_from: DO:00103 ! Fluorescent dynamic quenching
+disjoint_from: DO:00104 ! Fluorescent probes extrinsic fluorescence
+disjoint_from: DO:00105 ! Tryptophan triplet quenching
+
+[Term]
+id: DO:00102
+name: Fluorescence resonance energy transfer
+namespace: Detection method
+def: "Measures the efficiency of the distance-dependent transfer of energy between two chromophores by resonance, useful for monitoring changes in distance between atoms associated to folding events." []
+synonym: "fluorescent resonance energy transfer" EXACT []
+synonym: "FRET" EXACT []
+xref: MI:0055
+is_a: DO:00099 ! Fluorescence
+disjoint_from: DO:00100 ! Fluorescence intrinsic
+disjoint_from: DO:00101 ! Fluorescence polarization/anisotropy
+disjoint_from: DO:00103 ! Fluorescent dynamic quenching
+disjoint_from: DO:00104 ! Fluorescent probes extrinsic fluorescence
+disjoint_from: DO:00105 ! Tryptophan triplet quenching
+
+[Term]
+id: DO:00103
+name: Fluorescent dynamic quenching
+namespace: Detection method
+def: "The use of chemical or physical means to depopulate the excited state thereby abrogating fluorescence emission, which helps to describe the relative compactness and dynamics of a protein molecule." []
+synonym: "FDQ" EXACT []
+is_a: DO:00099 ! Fluorescence
+disjoint_from: DO:00100 ! Fluorescence intrinsic
+disjoint_from: DO:00101 ! Fluorescence polarization/anisotropy
+disjoint_from: DO:00102 ! Fluorescence resonance energy transfer
+disjoint_from: DO:00104 ! Fluorescent probes extrinsic fluorescence
+disjoint_from: DO:00105 ! Tryptophan triplet quenching
+
+[Term]
+id: DO:00104
+name: Fluorescent probes extrinsic fluorescence
+namespace: Detection method
+def: "Conformational analysis based on incorporation of a fluorescent probe into the core of a protein, with changes in the environment of the probe (dependent on rigidity of the structure) can be detected as changes in fluorescence." []
+synonym: "extrinsic fluorescence" EXACT []
+synonym: "Fluorescent probes" EXACT []
+synonym: "FPROBE" EXACT []
+is_a: DO:00099 ! Fluorescence
+disjoint_from: DO:00100 ! Fluorescence intrinsic
+disjoint_from: DO:00101 ! Fluorescence polarization/anisotropy
+disjoint_from: DO:00102 ! Fluorescence resonance energy transfer
+disjoint_from: DO:00103 ! Fluorescent dynamic quenching
+disjoint_from: DO:00105 ! Tryptophan triplet quenching
+
+[Term]
+id: DO:00105
+name: Tryptophan triplet quenching
+namespace: Detection method
+def: "Analysis of internal dynamics and distances of a protein by insertion of a unique tryptophan, cysteine or disulphide bond at selected sites, followed by the measurement of the decay after laser excitation." []
+synonym: "TTQ" EXACT []
+is_a: DO:00099 ! Fluorescence
+disjoint_from: DO:00100 ! Fluorescence intrinsic
+disjoint_from: DO:00101 ! Fluorescence polarization/anisotropy
+disjoint_from: DO:00102 ! Fluorescence resonance energy transfer
+disjoint_from: DO:00103 ! Fluorescent dynamic quenching
+disjoint_from: DO:00104 ! Fluorescent probes extrinsic fluorescence
+
+[Term]
+id: DO:00106
+name: Microscopy
+namespace: Detection method
+def: "Direct observation of structures." []
+synonym: "MICRO" EXACT []
+is_a: DO:00094 ! Optical analysis
+disjoint_from: DO:00095 ! Circular dichroism
+disjoint_from: DO:00099 ! Fluorescence
+disjoint_from: DO:00109 ! Optical rotatory dispersion
+
+[Term]
+id: DO:00107
+name: Atomic force microscopy
+namespace: Detection method
+def: "A type of scanning probe microscopy that allows direct visualization of proteins in physiological conditions at nanometer resolution." []
+synonym: "AFM" EXACT []
+synonym: "atomic force microscopy" EXACT []
+xref: MI:0872
+is_a: DO:00106 ! Microscopy
+disjoint_from: DO:00108 ! Rotary shadowing electron microscopy
+
+[Term]
+id: DO:00108
+name: Rotary shadowing electron microscopy
+namespace: Detection method
+def: "An electron microscopy technique that allows direct visualization of the 3D shape of a protein by interpreting how the electron beams are blocked by the sample, previously covered with a heavy metal of varying thickness according to the surface topography." []
+synonym: "Rotary shadowing-electron microscopy" EXACT []
+synonym: "Rotary shadowing/electron microscopy" EXACT []
+synonym: "RSEM" EXACT []
+is_a: DO:00106 ! Microscopy
+disjoint_from: DO:00107 ! Atomic force microscopy
+
+[Term]
+id: DO:00109
+name: Optical rotatory dispersion
+namespace: Detection method
+def: "Measures the optical dispersion caused by a protein on polarized light of varying wavelength, to determine the presence and amount of secondary structures." []
+synonym: "ORDISP" EXACT []
+is_a: DO:00094 ! Optical analysis
+disjoint_from: DO:00095 ! Circular dichroism
+disjoint_from: DO:00099 ! Fluorescence
+disjoint_from: DO:00106 ! Microscopy
+
+[Term]
+id: DO:00110
+name: Spectrometry
+namespace: Detection method
+def: "Analytical techniques to separate and measure spectral components of a sample." []
+synonym: "SPEC" EXACT []
+is_a: DO:00080 ! Detection method
+disjoint_from: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00091 ! Thermal analysis
+disjoint_from: DO:00094 ! Optical analysis
+disjoint_from: DO:00122 ! Scattering
+disjoint_from: DO:00127 ! Crystallography
+
+[Term]
+id: DO:00111
+name: Electrospray ionization fourier transform ion cyclotron resonance mass spectrometry
+namespace: Detection method
+def: "Measures the mass-to-charge ratio of ionised proteins in gas phase, which varies with the folding state." []
+synonym: "ESI FT ICR" EXACT []
+synonym: "ESI FT ICR MS" EXACT []
+synonym: "ESI FT-ICR" EXACT []
+synonym: "ESI FT-ICR MS" EXACT []
+synonym: "ESI-FT-ICR" EXACT []
+synonym: "ESI-FT-ICR-MS" EXACT []
+synonym: "ESI-FTICR" EXACT []
+synonym: "ESI-FTICR-MS" EXACT []
+synonym: "ESIFTICR" EXACT []
+synonym: "ESIFTICRMS" EXACT []
+is_a: DO:00110 ! Spectrometry
+disjoint_from: DO:00112 ! Fourier transform infrared spectroscopy
+disjoint_from: DO:00113 ! NMR-based hydrogen-deuterium exchange
+disjoint_from: DO:00114 ! Mass spectrometry-based high resolution hydrogen-deuterium exchange
+disjoint_from: DO:00115 ! Raman
+disjoint_from: DO:00118 ! Site-directed spin-labelling electron paramagnetic resonance spectroscopy
+disjoint_from: DO:00119 ! Vibrational spectroscopy of cyanylated cysteines
+disjoint_from: DO:00120 ! Nuclear magnetic resonance
+disjoint_from: DO:00121 ! Proton-based nuclear magnetic resonance
+
+[Term]
+id: DO:00112
+name: Fourier transform infrared spectroscopy
+namespace: Detection method
+def: "Collects the infrared spectrum of absortion of a protein by measuring absorption in a wide spectral range simultaneously, providing information on the vibrational movements of functional groups in the protein and allowing identification of secondary structures." []
+synonym: "FTIRS" EXACT []
+is_a: DO:00110 ! Spectrometry
+disjoint_from: DO:00111 ! Electrospray ionization fourier transform ion cyclotron resonance mass spectrometry
+disjoint_from: DO:00113 ! NMR-based hydrogen-deuterium exchange
+disjoint_from: DO:00114 ! Mass spectrometry-based high resolution hydrogen-deuterium exchange
+disjoint_from: DO:00115 ! Raman
+disjoint_from: DO:00118 ! Site-directed spin-labelling electron paramagnetic resonance spectroscopy
+disjoint_from: DO:00119 ! Vibrational spectroscopy of cyanylated cysteines
+disjoint_from: DO:00120 ! Nuclear magnetic resonance
+disjoint_from: DO:00121 ! Proton-based nuclear magnetic resonance
+
+[Term]
+id: DO:00113
+name: NMR-based hydrogen-deuterium exchange
+namespace: Detection method
+def: "NMR-based measurement of the exchange rate between deuterium in the solvent and hydrogen in the main chain amides, with faster exchange rates indicating more flexibility." []
+synonym: "NMR Hydrogen deuterium exchange" EXACT []
+synonym: "NMR Hydrogen/deuterium exchange" EXACT []
+synonym: "NMRHDE" EXACT []
+is_a: DO:00110 ! Spectrometry
+disjoint_from: DO:00111 ! Electrospray ionization fourier transform ion cyclotron resonance mass spectrometry
+disjoint_from: DO:00112 ! Fourier transform infrared spectroscopy
+disjoint_from: DO:00114 ! Mass spectrometry-based high resolution hydrogen-deuterium exchange
+disjoint_from: DO:00115 ! Raman
+disjoint_from: DO:00118 ! Site-directed spin-labelling electron paramagnetic resonance spectroscopy
+disjoint_from: DO:00119 ! Vibrational spectroscopy of cyanylated cysteines
+disjoint_from: DO:00120 ! Nuclear magnetic resonance
+disjoint_from: DO:00121 ! Proton-based nuclear magnetic resonance
+
+[Term]
+id: DO:00114
+name: Mass spectrometry-based high resolution hydrogen-deuterium exchange
+namespace: Detection method
+def: "Mass spectrometry-based measurment of the exchange rate between deuterium in the solvent and hydrogen in the main chain amides, with faster exchange rates indicating more flexibility." []
+synonym: "mass spectrometry study of hydrogen/deuterium exchange" EXACT []
+synonym: "MSHDE" EXACT []
+xref: MI:0944
+is_a: DO:00110 ! Spectrometry
+disjoint_from: DO:00111 ! Electrospray ionization fourier transform ion cyclotron resonance mass spectrometry
+disjoint_from: DO:00112 ! Fourier transform infrared spectroscopy
+disjoint_from: DO:00113 ! NMR-based hydrogen-deuterium exchange
+disjoint_from: DO:00115 ! Raman
+disjoint_from: DO:00118 ! Site-directed spin-labelling electron paramagnetic resonance spectroscopy
+disjoint_from: DO:00119 ! Vibrational spectroscopy of cyanylated cysteines
+disjoint_from: DO:00120 ! Nuclear magnetic resonance
+disjoint_from: DO:00121 ! Proton-based nuclear magnetic resonance
+
+[Term]
+id: DO:00115
+name: Raman
+namespace: Detection method
+def: "A technique to study the scattering of light by vibrating molecules." []
+synonym: "RAMAN" EXACT []
+is_a: DO:00110 ! Spectrometry
+disjoint_from: DO:00111 ! Electrospray ionization fourier transform ion cyclotron resonance mass spectrometry
+disjoint_from: DO:00112 ! Fourier transform infrared spectroscopy
+disjoint_from: DO:00113 ! NMR-based hydrogen-deuterium exchange
+disjoint_from: DO:00114 ! Mass spectrometry-based high resolution hydrogen-deuterium exchange
+disjoint_from: DO:00118 ! Site-directed spin-labelling electron paramagnetic resonance spectroscopy
+disjoint_from: DO:00119 ! Vibrational spectroscopy of cyanylated cysteines
+disjoint_from: DO:00120 ! Nuclear magnetic resonance
+disjoint_from: DO:00121 ! Proton-based nuclear magnetic resonance
+
+[Term]
+id: DO:00116
+name: Raman optical activity
+namespace: Detection method
+def: "Study of protein dynamics by measuring the difference in Raman scattering of right and left circularly polarised light associated with protein chirality." []
+synonym: "ROA" EXACT []
+is_a: DO:00115 ! Raman
+disjoint_from: DO:00117 ! Raman spectroscopy
+
+[Term]
+id: DO:00117
+name: Raman spectroscopy
+namespace: Detection method
+def: "A spectroscopic technique based on Raman scattering to determine vibrational modes of proteins, which can be used to measure secondary structure content." []
+synonym: "RSPEC" EXACT []
+is_a: DO:00115 ! Raman
+disjoint_from: DO:00116 ! Raman optical activity
+
+[Term]
+id: DO:00118
+name: Site-directed spin-labelling electron paramagnetic resonance spectroscopy
+namespace: Detection method
+def: "Detection of unpaired electrons using a paramagnetic group introduced at a selected protein site, that allows the inference of the mobility of the spin probe and thus the study of global flexibility, local structure or induced folding." []
+synonym: "EPR" EXACT []
+synonym: "EPR spectroscopy" EXACT []
+synonym: "SDSL" EXACT []
+synonym: "Site-directed spin-labeling" EXACT []
+is_a: DO:00110 ! Spectrometry
+disjoint_from: DO:00111 ! Electrospray ionization fourier transform ion cyclotron resonance mass spectrometry
+disjoint_from: DO:00112 ! Fourier transform infrared spectroscopy
+disjoint_from: DO:00113 ! NMR-based hydrogen-deuterium exchange
+disjoint_from: DO:00114 ! Mass spectrometry-based high resolution hydrogen-deuterium exchange
+disjoint_from: DO:00115 ! Raman
+disjoint_from: DO:00119 ! Vibrational spectroscopy of cyanylated cysteines
+disjoint_from: DO:00120 ! Nuclear magnetic resonance
+disjoint_from: DO:00121 ! Proton-based nuclear magnetic resonance
+
+[Term]
+id: DO:00119
+name: Vibrational spectroscopy of cyanylated cysteines
+namespace: Detection method
+def: "Analysis of IR absorption bands using cyanylated cisteines that allows to infer solvent exposure and degree of structure." []
+synonym: "VS" EXACT []
+is_a: DO:00110 ! Spectrometry
+disjoint_from: DO:00111 ! Electrospray ionization fourier transform ion cyclotron resonance mass spectrometry
+disjoint_from: DO:00112 ! Fourier transform infrared spectroscopy
+disjoint_from: DO:00113 ! NMR-based hydrogen-deuterium exchange
+disjoint_from: DO:00114 ! Mass spectrometry-based high resolution hydrogen-deuterium exchange
+disjoint_from: DO:00115 ! Raman
+disjoint_from: DO:00118 ! Site-directed spin-labelling electron paramagnetic resonance spectroscopy
+disjoint_from: DO:00120 ! Nuclear magnetic resonance
+disjoint_from: DO:00121 ! Proton-based nuclear magnetic resonance
+
+[Term]
+id: DO:00120
+name: Nuclear magnetic resonance
+namespace: Detection method
+def: "Detection of connectivity between neighboring residues by resonance at atomic resolution." []
+synonym: "NMR" EXACT []
+synonym: "nuclear magnetic resonance" EXACT []
+xref: MI:0077
+is_a: DO:00110 ! Spectrometry
+disjoint_from: DO:00111 ! Electrospray ionization fourier transform ion cyclotron resonance mass spectrometry
+disjoint_from: DO:00112 ! Fourier transform infrared spectroscopy
+disjoint_from: DO:00113 ! NMR-based hydrogen-deuterium exchange
+disjoint_from: DO:00114 ! Mass spectrometry-based high resolution hydrogen-deuterium exchange
+disjoint_from: DO:00115 ! Raman
+disjoint_from: DO:00118 ! Site-directed spin-labelling electron paramagnetic resonance spectroscopy
+disjoint_from: DO:00119 ! Vibrational spectroscopy of cyanylated cysteines
+disjoint_from: DO:00121 ! Proton-based nuclear magnetic resonance
+
+[Term]
+id: DO:00121
+name: Proton-based nuclear magnetic resonance
+namespace: Detection method
+def: "Determination of secondary and tertiary structure of proteins based on NOESY spectra obtained from application of NMR spectroscopy with respect to hydrogen nuclei closer than 5 Å to each other." []
+synonym: "PNMR" EXACT []
+synonym: "Proton based NMR" EXACT []
+is_a: DO:00110 ! Spectrometry
+disjoint_from: DO:00111 ! Electrospray ionization fourier transform ion cyclotron resonance mass spectrometry
+disjoint_from: DO:00112 ! Fourier transform infrared spectroscopy
+disjoint_from: DO:00113 ! NMR-based hydrogen-deuterium exchange
+disjoint_from: DO:00114 ! Mass spectrometry-based high resolution hydrogen-deuterium exchange
+disjoint_from: DO:00115 ! Raman
+disjoint_from: DO:00118 ! Site-directed spin-labelling electron paramagnetic resonance spectroscopy
+disjoint_from: DO:00119 ! Vibrational spectroscopy of cyanylated cysteines
+disjoint_from: DO:00120 ! Nuclear magnetic resonance
+
+[Term]
+id: DO:00122
+name: Scattering
+namespace: Detection method
+def: "Experimental techniques that measures the scattering of a beam by a sample." []
+synonym: "SCAT" EXACT []
+is_a: DO:00080 ! Detection method
+disjoint_from: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00091 ! Thermal analysis
+disjoint_from: DO:00094 ! Optical analysis
+disjoint_from: DO:00110 ! Spectrometry
+disjoint_from: DO:00127 ! Crystallography
+
+[Term]
+id: DO:00123
+name: Dynamic light scattering
+namespace: Detection method
+def: "Measures the extent of polarized light scattering by a protein in solution to determine its hydrodynamic radius, dependent upon its size and conformation." []
+synonym: "DLS" EXACT []
+synonym: "dynamic light scattering" EXACT []
+xref: MI:0038
+is_a: DO:00122 ! Scattering
+disjoint_from: DO:00124 ! Small-angle neutron scattering
+disjoint_from: DO:00125 ! Small-angle X-ray scattering
+disjoint_from: DO:00126 ! Static light scattering
+
+[Term]
+id: DO:00124
+name: Small-angle neutron scattering
+namespace: Detection method
+def: "Measures the extent of neutron scattering by a protein in solution on very small scales, to obtain details on the size, shape, and orientation of the protein." []
+synonym: "SANS" EXACT []
+synonym: "small angle neutron scattering" EXACT []
+xref: MI:0888
+is_a: DO:00122 ! Scattering
+disjoint_from: DO:00123 ! Dynamic light scattering
+disjoint_from: DO:00125 ! Small-angle X-ray scattering
+disjoint_from: DO:00126 ! Static light scattering
+
+[Term]
+id: DO:00125
+name: Small-angle X-ray scattering
+namespace: Detection method
+def: "Measures the extent of x-ray scattering by a protein in solution on nanoscale, to obtain details on the diameter, the radius of gyration and the degree of globularity of the protein." []
+synonym: "SAXS" EXACT []
+synonym: "small angle x-ray scattering" EXACT []
+synonym: "small angle xray scattering" EXACT []
+xref: MI:0826
+is_a: DO:00122 ! Scattering
+disjoint_from: DO:00123 ! Dynamic light scattering
+disjoint_from: DO:00124 ! Small-angle neutron scattering
+disjoint_from: DO:00126 ! Static light scattering
+
+[Term]
+id: DO:00126
+name: Static light scattering
+namespace: Detection method
+def: "Measures the extent of scattering of a high-intensity monochromatic light (usually a laser) by a protein in solution, to obtain details on the hydrodynamic radius of the protein, which is dependent upon the size and conformation of the protein." []
+synonym: "SLS" EXACT []
+synonym: "static light scattering" EXACT []
+xref: MI:0104
+is_a: DO:00122 ! Scattering
+disjoint_from: DO:00123 ! Dynamic light scattering
+disjoint_from: DO:00124 ! Small-angle neutron scattering
+disjoint_from: DO:00125 ! Small-angle X-ray scattering
+
+[Term]
+id: DO:00127
+name: Crystallography
+namespace: Detection method
+def: "Determines the arrangement of atoms in crystal solids." []
+synonym: "CRYST" EXACT []
+is_a: DO:00080 ! Detection method
+disjoint_from: DO:00081 ! Analytical chemistry
+disjoint_from: DO:00091 ! Thermal analysis
+disjoint_from: DO:00094 ! Optical analysis
+disjoint_from: DO:00110 ! Spectrometry
+disjoint_from: DO:00122 ! Scattering
+
+[Term]
+id: DO:00128
+name: Electron cryomicroscopy
+namespace: Detection method
+def: "Direct visualization of a protein in physiological state by using transmission electron microscopy on a frozen protein sample." []
+synonym: "CEM" EXACT []
+synonym: "cryo-electron microscopy" EXACT []
+synonym: "CryoEM" EXACT []
+synonym: "cryogenic electron microscopy" EXACT []
+synonym: "electron cryomicroscopy" EXACT []
+is_a: DO:00127 ! Crystallography
+disjoint_from: DO:00129 ! High relative B-factor
+disjoint_from: DO:00130 ! Missing electron density
+
+[Term]
+id: DO:00129
+name: High relative B-factor
+namespace: Detection method
+def: "Measures the degree in which the electron density is spread out for individual atoms or groups of atoms within a sample, with higher B-factors indicating higher relative flexibility." []
+synonym: "BF" EXACT []
+synonym: "high b factor" EXACT []
+synonym: "high b-factor" EXACT []
+synonym: "high bfactor" EXACT []
+synonym: "high temperature factor" EXACT []
+is_a: DO:00127 ! Crystallography
+disjoint_from: DO:00128 ! Electron cryomicroscopy
+disjoint_from: DO:00130 ! Missing electron density
+
+[Term]
+id: DO:00130
+name: Missing electron density
+namespace: Detection method
+def: "A structure with atoms or residues that are not declared, although present in the source material, due to the absence of electron density." []
+synonym: "MISS" EXACT []
+synonym: "missing electron densities" EXACT []
+synonym: "missing electron density" EXACT []
+is_a: DO:00127 ! Crystallography
+disjoint_from: DO:00128 ! Electron cryomicroscopy
+disjoint_from: DO:00129 ! High relative B-factor

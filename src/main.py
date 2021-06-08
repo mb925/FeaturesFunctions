@@ -16,8 +16,13 @@ if __name__ == '__main__':
                   '00022', '00023', '00025', '00026', '00027', '00028',
                   '00029', '00032', '00033', '00034', '00037', '00038',
                   '00041', '00042', '00043', '00046', '00047']
+
+
+
+    # list_terms = ['00051']
     list_features = ['prediction-low_complexity-merge', 'prediction-proline_rich-mobidb_lite_sub',
                      'prediction-lip-anchor']
+    # list_features = ['prediction-low_complexity-merge']
     parser.create_protein_terms_features_table(list_terms, list_features)
 
 

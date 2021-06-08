@@ -68,40 +68,43 @@ def create_protein_terms_features_table(terms, features):
     for feature in features:
         for term in terms:
             print(term)
+            # add features to files
             # parse_file_proteins_features(term, feature)
-            # generate_heatmaps_files(term, feature)
+            generate_heatmap_dataset(term, feature)
         generate_heatmaps(feature)
 
 
 def parse_file_protein_terms(term):
-    # print(term)
+    print(term)
 
     with open(cfg.data['data'] + 'disprot_regions.json') as json_file:
         data = json.load(json_file)
-        count = 0
-        flag_term = False
-
+        dict_terms = {}
         for el in data['data']:
-            count += 1
-            sequence_length = len(el['sequence'])
-            term_column = [0] * sequence_length
-
+            flag_term = False
 
             for region in el['regions']:
                 if region['term_id'] == term:
                     flag_term = True
                     for i in range(region['start'] - 1, region['end'] -1):
-                        term_column[i] = 1
+                        if el['acc'] in dict_terms:
+                            dict_terms[el['acc']][i] = 1
+                        else:
+                            sequence_length = len(el['sequence'])
+                            dict_terms[el['acc']] = [0] * sequence_length
 
-            if flag_term:
+            if flag_term == True:
                 term_dir = cfg.data['data'] + 'proteins_terms_features/' + term + '/'
                 if not os.path.exists(term_dir):
                     os.makedirs(term_dir)
-                df = pd.DataFrame(term_column, columns=['term'])
+                df = pd.DataFrame(dict_terms[el['acc']], columns=['term'])
+
                 df.to_csv(term_dir + el['acc'] + '.tsv', sep='\t')
 
-        if flag_term == False:
-            print(term + ' not found')
+            if flag_term == False:
+                print(term + ' not found')
+
+
 
 def parse_file_proteins_features(term, feature):
     count = 0
@@ -135,7 +138,6 @@ def calculate_jaccard_index(term, feature):
     term_dir = cfg.data['data'] + 'proteins_terms_features/' + term + '/'
 
     for filename in os.listdir(term_dir):
-        print(filename)
         df_file = pd.read_csv(term_dir + filename, sep='\t', index_col=[0])
         intersection = df_file.loc[(df_file.term == 1) & (df_file[feature] == 1)]
         union = df_file.loc[(df_file.term == 1) | (df_file[feature] == 1)]
@@ -143,34 +145,33 @@ def calculate_jaccard_index(term, feature):
         if len(intersection) != 0:
             jaccard = round(len(intersection) / len(union), 2)
             # print(jaccard)
-        if jaccard != 0:
-            dict_jaccard[term + '-' + feature].append(jaccard)
+        dict_jaccard[term + '-' + feature].append(round(jaccard, 1))
+
+    print('jaccard')
+    print(dict_jaccard[term + '-' + feature])
+    print('histobins')
 
 
-    y = np.array(dict_jaccard[term + '-' + feature])
-    plt.hist(y)
-    ax = plt.gca()  # get axis handle
-    p = ax.patches
-    heights = [patch.get_height() for patch in p]
-    norm = np.linalg.norm(heights)
-
-    if norm == 0:
-        normal_heights = [0]*10
-    else:
-        normal_heights = heights / norm
-
-
-    plt.close()
     row = []
-    for j in range(10):
+    # how many times each step happens
+    total_occurrences = []
+
+    for j in np.arange(0, 1, 0.1):
+        jaccard_occurrence = dict_jaccard[term + '-' + feature].count(round(j, 1))
+        total_occurrences.append(jaccard_occurrence)
+
+    print(total_occurrences)
+    for x in range(10):
         row.append(term)
-        row.append(j + 1)
-        row.append(round(normal_heights[j], 2))
+        row.append(x + 1)
+        # normalizing the occurrences to the range 0 1
+        row.append(total_occurrences[x] / sum(total_occurrences))
 
     row_splitted = [row[i:i + 3] for i in range(0, len(row), 3)]
+
     return row_splitted
 
-def generate_heatmaps_files(term, feature):
+def generate_heatmap_dataset(term, feature):
     rows = calculate_jaccard_index(term, feature)
     headers = ['term', 'jaccard', 'proteins', 'feature']
     file_exists = os.path.isfile(cfg.data['data'] + 'heatmaps/dataset.csv')
@@ -189,7 +190,6 @@ def generate_heatmaps(feature):
 
     # reshape term_feature dataset in proper format to create seaborn heatmap
     term_feature_df = df_range.pivot('term', 'jaccard', 'proteins')
-    print(term_feature_df)
 
     sns.heatmap(term_feature_df, cmap="BuPu", xticklabels=True, yticklabels=True)
 
