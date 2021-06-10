@@ -61,16 +61,15 @@ terms_names = {
 
 
 def create_protein_terms_features_table(terms, features):
-    for term in terms:
-        parse_file_protein_terms(term)
+    # for term in terms:
+        # parse_file_protein_terms(term)
 
     for feature in features:
-        for term in terms:
-            print(term)
             # add features to files
-            # parse_file_proteins_features(term, feature)
+            parse_file_proteins_features(terms, feature)
         #     generate_heatmap_dataset(term, feature)
         # generate_heatmaps(feature)
+        # I could erase all generated files with a command here at the end
 
 
 def parse_file_protein_terms(term):
@@ -108,37 +107,51 @@ def parse_file_protein_terms(term):
         if the_term_is_in_the_whole_file == False:
             print(term + ' not found')
 
-        file = cfg.data['data'] + 'terms_features.tsv'
+        file = cfg.data['data'] + 'proteins_terms_features/terms_features.tsv'
         df.to_csv(file, mode='a',  header=(not os.path.exists(file)), sep='\t', index=False)
 
 
 
 
-def parse_file_proteins_features(term, feature):
-    df_features = pd.read_csv(cfg.data['data'] + 'mobidb_features.tsv', sep='\t')
-    print(feature)
+def parse_file_proteins_features(terms, feature):
+    full_feature_column = []
 
-    # calculate features for each acc
-    file_dir = cfg.data['data'] + 'terms_features.tsv'
-    df_terms_features = pd.read_csv(file_dir, sep= '\t')
-    accessions = df_terms_features.acc.unique()
-    for acc in accessions:
-        regions = df_features.loc[(df_features.acc == acc) & (df_features.feature == feature)]['start..end'].values
-        if len(regions) > 0:
-            regions = regions[0].split(',')
+    for term in terms:
 
+        df_features = pd.read_csv(cfg.data['data'] + 'mobidb_features.tsv', sep='\t')
+        print(feature)
 
-        # write features to file
-        # will be zero if feature is missing or if acc is missing in the mobidb file
-        feature_column = [0] * len(sequence_length)
-        for region in regions:
-            start = region.split('..')[0]
-            end = region.split('..')[1]
-            for i in range(int(start) - 1, int(end) - 1):
-                feature_column[i] = 1
-        df_terms_features[feature] = feature_column
+        # calculate features for each acc
+        terms_features_file = cfg.data['data'] + 'proteins_terms_features/terms_features.tsv'
+        df_terms_features = pd.read_csv(terms_features_file, sep= '\t')
+        accessions = df_terms_features.acc.unique()
+        for acc in accessions:
 
-        df_terms_features.to_csv(term_dir + filename, sep='\t')
+            sequence_length = df_terms_features.loc[(df_terms_features.acc == acc) & (df_terms_features.term_code == terms_names[term]) ]
+            sequence_length = len(sequence_length.index)
+            if sequence_length == 0:
+                continue
+            print(acc)
+            print(sequence_length)
+
+            regions = df_features.loc[(df_features.acc == acc) & (df_features.feature == feature)]['start..end'].values
+            if len(regions) > 0:
+                regions = regions[0].split(',')
+                print(regions)
+
+            # write features to file
+            # will be zero if feature is missing or if acc is missing in the mobidb file
+            feature_column = [0] * sequence_length
+            for region in regions:
+                start = region.split('..')[0]
+                end = region.split('..')[1]
+                for i in range(int(start) - 1, int(end) - 1):
+                    print(i)
+                    feature_column[i] = 1
+            full_feature_column = full_feature_column + feature_column
+
+    df_terms_features[feature] = full_feature_column
+    df_terms_features.to_csv(terms_features_file, sep='\t')
 
 
 def calculate_jaccard_index(term, feature):
