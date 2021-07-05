@@ -1,12 +1,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import parser
-import seaborn as sns # for data visualization
+import obo_parser
+import config as cfg
 
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    obo_file = cfg.data['data'] + 'idpontology_disprot.obo'
+
+    ontology_tree = obo_parser.parse_obo(obo_file)
+    list_terms_test = parser.obtain_terms(ontology_tree)
+    # list_terms = parser.obtain_terms(ontology_tree)
 
     # list_terms = ['00077', '00078',  '00051',  '00052',  '00053', '00055',
     #               '00058',  '00060', '00063', '00065',
@@ -19,10 +25,10 @@ if __name__ == '__main__':
 
 
 
-    list_terms = ['00051', '00052']
+    # list_terms = ['00051', '00052']
     # list_features = ['prediction-low_complexity-merge', 'prediction-proline_rich-mobidb_lite_sub',
     #                  'prediction-lip-anchor']
-    list_features = ['prediction-low_complexity-merge']
-    parser.create_protein_terms_features_table(list_terms, list_features)
+    # list_features = ['prediction-low_complexity-merge']
+    # parser.create_protein_terms_features_table(list_terms, list_features)
 
 
