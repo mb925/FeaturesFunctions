@@ -8,6 +8,7 @@ import config as cfg
 import json
 import matplotlib.pyplot as plt
 import seaborn as sns
+import random
 
 terms_names = {
 
@@ -58,28 +59,50 @@ terms_names = {
     '00047': {'name':'Prion', 'quantity':''}
 
 }
-dict_tree = {}
-dict_tree_set = {}
-
-def access(tree, value):
-
-    while len(tree[value]['parents']) > 0:
-        print('my dad!')
-        dict_tree[value].append(tree[value]['parents'][0])
-
-        value = tree[value]['parents'][0]
-        print(value)
-        access(tree, value)
 
 
-def obtain_terms(tree):
 
-    for value in tree:
-        dict_tree[value] = []
-        print('I am: ' + value)
-        access(tree, value)
+def visit_tree(tree):
+    tree_visit = []
+    levels_tree = {}
+    registered = [] # values that are registered into the levels_tree
 
-    print(dict_tree)
+    key, value = 'DO:00000', tree['DO:00000']
+    level = 0
+    node = [key, value, level]
+    tree_visit.append(node)
+    levels_tree[node[2]] = [key]
+    registered.append(key)
+    while len(tree_visit) > 0:
+        node = tree_visit.pop()
+        if len(node[1]['parents']) > 0:
+            parent_key = node[1]['parents'][0]
+            if parent_key not in registered:
+                    parent_value = tree[parent_key]
+                    parent_level = node[2] - 1
+                    if parent_level in levels_tree:
+                        levels_tree[parent_level].append(parent_key)
+                    else:
+                        levels_tree[parent_level] = [parent_key]
+
+                    registered.append(parent_key)
+                    tree_visit.append([parent_key, parent_value, parent_level])
+
+        for child in node[1]['children']:
+            if child not in registered:
+
+                child_value = tree[child]
+                child_level = node[2] + 1
+                if child_level in levels_tree:
+                    levels_tree[child_level].append(child)
+                else:
+                    levels_tree[child_level] = [child]
+
+                registered.append(child)
+                tree_visit.append([child, child_value, child_level])
+
+    # reset keys levels
+    print(tree)
 
 
 

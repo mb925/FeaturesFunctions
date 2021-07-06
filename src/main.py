@@ -11,7 +11,7 @@ if __name__ == '__main__':
     obo_file = cfg.data['data'] + 'idpontology_disprot.obo'
 
     ontology_tree = obo_parser.parse_obo(obo_file)
-    list_terms_test = parser.obtain_terms(ontology_tree)
+    list_terms_test = parser.visit_tree(ontology_tree)
     # list_terms = parser.obtain_terms(ontology_tree)
 
     # list_terms = ['00077', '00078',  '00051',  '00052',  '00053', '00055',
