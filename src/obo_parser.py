@@ -44,3 +44,13 @@ def parse_obo(obo_file):
         go_terms[i]['parents'].append(j)
         go_terms[j]['children'].append(i)
     return go_terms
+
+def get_relationships(list_terms, ontology_tree):
+    relationship = {}
+    for term in list_terms:
+        if len(ontology_tree['DO:' + term]['children']) > 0:
+            relationship[term] = []
+            for el in ontology_tree['DO:' + term]['children']:
+                relationship[term].append( el.split(':')[1])
+
+    return relationship
