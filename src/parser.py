@@ -80,14 +80,14 @@ def create_protein_terms_features_table(terms, features, level, relationships):
     # for term in terms:
     #     terms = parse_file_protein_terms(terms, term, level)
 
-    build_dictionary_ontology(level) #needed to set quantity
+    build_dictionary_ontology(level, relationships) # needed to set quantity
 
     for feature in features:
-    #     # add features to files
-    #     parse_file_proteins_features(terms, feature, level)
+        # add features to files
+        # parse_file_proteins_features(terms, feature, level)
         generate_heatmap_dataset(terms, feature, level, relationships)
-        # generate_heatmaps(feature, level)
-    # I could erase all generated files with a command here at the end
+
+    # I could backup all files in the backup folder, which I can delete manually
 
 def visit_tree(tree, target):
     tree_visit = []
@@ -133,12 +133,21 @@ def visit_tree(tree, target):
 
 
 
-def build_dictionary_ontology(level):
+def build_dictionary_ontology(level, relationship):
     file = cfg.data['data'] + 'proteins_terms_features/' + level + '/terms_features.tsv'
     df_terms_features = pd.read_csv(file, sep='\t')
     for term in terms_names:
-        file_count = df_terms_features.loc[(df_terms_features.term_code == terms_names[term]['name'])].acc.unique()
-        terms_names[term]['quantity'] = str(len(file_count)) # todo add child when neeeded
+        if term in relationship:
+            accessions = df_terms_features.loc[
+                (df_terms_features.term_code == terms_names[term]['name'])].acc.unique().tolist()
+            for child in relationship[term]:
+                acc_child = df_terms_features.loc[
+                    (df_terms_features.term_code == terms_names[child]['name'])].acc.unique().tolist()
+                accessions = accessions + acc_child
+
+        else:
+            accessions = df_terms_features.loc[(df_terms_features.term_code == terms_names[term]['name'])].acc.unique()
+        terms_names[term]['quantity'] = str(len(accessions)) # todo add child when neeeded
 
 def read_disprot_terms():
     file = cfg.data['data'] + '/disprot_terms.tsv'
@@ -257,18 +266,17 @@ def calculate_jaccard_index(term, feature, level, relationship):
         for child in relationship[term]:
             acc_child = df_terms_features.loc[(df_terms_features.term_code == terms_names[child]['name'])].acc.unique().tolist()
             accessions = accessions + acc_child
-        print(accessions)
     else:
         accessions = df_terms_features.loc[(df_terms_features.term_code == terms_names[term]['name'])].acc.unique().tolist()
     left = 0
     for acc in accessions:
         # print('acc: ' + acc)
-        df_file = pd.read_csv(terms_features_file, sep='\t', index_col=[0])
+        df_file = pd.read_csv(terms_features_file, sep='\t', index_col=[0]) # sposta prima
         intersection = df_file.loc[(df_file.acc == acc) & (df_file.term == 1) & (df_file[feature] == 1)]
 
         # union = df_file.loc[(df_file.acc == acc) & ( df_file[feature] == 1)] #feature
-        union = df_file.loc[(df_file.acc == acc) & (df_file.term == 1)] #function
-        # union = df_file.loc[(df_file.acc == acc) & ((df_file.term == 1) | (df_file[feature] == 1))]
+        # union = df_file.loc[(df_file.acc == acc) & (df_file.term == 1)] # term
+        union = df_file.loc[(df_file.acc == acc) & ((df_file.term == 1) | (df_file[feature] == 1))] # union
         jaccard = 0
         if len(intersection) != 0:
             jaccard = round(len(intersection) / len(union), 2)
@@ -310,8 +318,7 @@ def generate_heatmap_dataset(terms, feature, level, relationship):
         # print(term)
         # if you are a child I'll skip you
         # I'm going to consider u anyway through relationship with father when I calculate jaccard
-
-        if term in sum(relationship.values(), []):
+        if len(relationship) > 0 and term in sum(relationship.values(), []):
             continue
         rows, jaccard_values = calculate_jaccard_index(term, feature, level, relationship)
         headers = ['term', 'overlap', 'proteins', 'feature']
@@ -322,41 +329,102 @@ def generate_heatmap_dataset(terms, feature, level, relationship):
                 writer.writeheader()
             for row in rows:
                 # print(terms_names)
-                # print(row[0])
-                if int(terms_names[row[0]]['quantity']) > 10: # todo: && child
+                print(row[0])
+                print(terms_names[row[0]]['quantity'])
+                print(terms_names[row[0]]['left'])
+                if int(terms_names[row[0]]['quantity']) > 10 and int(terms_names[row[0]]['left']) > 0:
+                    print(terms_names[row[0]]['name'])
+
                     writer.writerow({'term': terms_names[row[0]]['name'] + ' (' + terms_names[row[0]]['left'] + '/' + terms_names[row[0]]['quantity'] + ')', 'overlap': row[1], 'proteins': row[2], 'feature': feature})
 
         # if len(jaccard_values) > 0:
         #     dict_jac[term + '_' + feature] = jaccard_values
 
-# def draw_histograms(total, fig, count, jaccard_values):
-#     print(total)
-#     print(count)
-#     ax1 = fig.add_subplot(1, total, count)
-#     ax1.set_ylabel('#proteins', fontsize=20)
-#     ax1.set_xlabel('overlap', fontsize=20)
-#     ax1.hist(jaccard_values, bins=20)
-#     plt.show()
 
-def generate_heatmaps(feature, level):
-    term_feature = pd.read_csv(cfg.data['data'] + 'heatmaps/' + level + '/dataset.csv')
+def generate_heatmaps(feature):
+    fig, (ax1,ax2,ax3) = plt.subplots(3, dpi=300)
+    sns.set(font_scale=0.1)
+    # from the 3 datasets (level 1, 2, 3) create a single plot with 3 heatmaps
 
-    df_range = term_feature.loc[(term_feature.feature == feature)]
+    # dataset1
+    term_feature1 = pd.read_csv(cfg.data['heatmaps'] + 'level_1/dataset.csv')
+    df_range1 = term_feature1.loc[(term_feature1.feature == feature)]
 
     # reshape term_feature dataset in proper format to create seaborn heatmap
-    term_feature_df = df_range.pivot('term', 'overlap', 'proteins')
-    fig, ax = plt.subplots(1, 1, figsize=(8, 3), dpi=300)
-    sns.set(font_scale=1)
-    sns.heatmap(term_feature_df, cmap="BuPu", xticklabels=True, yticklabels=True, vmin=0, vmax=1)
-    ax.set_ylabel('')
+    term_feature_df1 = df_range1.pivot('term', 'overlap', 'proteins')
+    # split index column and obtain quantity
+    term_feature_df1['quantity'] = term_feature_df1.index.str.split("/", expand=True)
+    # sort based on quantity
+    quantity_left = []
+    for el in term_feature_df1['quantity']:
+        quantity_left.append(int(el[0].split('(')[1]))
+    term_feature_df1['quantity'] = quantity_left
+    term_feature_df1.sort_values(by='quantity', ascending=False, inplace=True)
+    # drop quantity column
+    del term_feature_df1['quantity']
+
+    g1 = sns.heatmap(term_feature_df1, cmap="BuPu", xticklabels=True, yticklabels=True, vmin=0, vmax=1,ax=ax1)
+    g1.set_ylabel('')
+
+    # dataset2
+    term_feature2 = pd.read_csv(cfg.data['heatmaps'] + 'level_2/dataset.csv')
+    df_range2 = term_feature2.loc[(term_feature2.feature == feature)]
+
+    # reshape term_feature dataset in proper format to create seaborn heatmap
+    term_feature_df2 = df_range2.pivot('term', 'overlap', 'proteins')
+    # split index column and obtain quantity
+    term_feature_df2['quantity'] = term_feature_df2.index.str.split("/", expand=True)
+    # sort based on quantity
+
+    quantity_left = []
+    for el in term_feature_df2['quantity']:
+        if el[0] == 'Flexible linker':
+            quantity_left.append(int(el[1].split('(')[1]))
+        else:
+            quantity_left.append(int(el[0].split('(')[1]))
+
+    term_feature_df2['quantity'] = quantity_left
+    term_feature_df2.sort_values(by='quantity', ascending=False, inplace=True)
+    del term_feature_df2['quantity']
+
+    g2 = sns.heatmap(term_feature_df2, cmap="BuPu", xticklabels=True, yticklabels=True, vmin=0, vmax=1,ax=ax2)
+    g2.set_ylabel('')
+
+    # dataset3
+    term_feature3 = pd.read_csv(cfg.data['heatmaps'] + 'level_3/dataset.csv')
+    df_range3 = term_feature3.loc[(term_feature3.feature == feature)]
+
+    if not df_range3.empty:
+
+
+        # reshape term_feature dataset in proper format to create seaborn heatmap
+        term_feature_df3 = df_range3.pivot('term', 'overlap', 'proteins').dropna(how='all', axis=1)
+        print(term_feature_df3)
+        # split index column and obtain quantity
+        term_feature_df3['quantity'] = term_feature_df3.index.str.split("/", expand=True)
+        # sort based on quantity
+        quantity_left = []
+        for el in term_feature_df3['quantity']:
+            quantity_left.append(int(el[0].split('(')[1]))
+        term_feature_df3['quantity'] = quantity_left
+        term_feature_df3.sort_values(by='quantity', ascending=False, inplace=True)
+        # drop quantity column
+        del term_feature_df3['quantity']
+        g3 = sns.heatmap(term_feature_df3, cmap="BuPu", xticklabels=True, yticklabels=True, vmin=0, vmax=1,ax=ax3)
+        g3.set_ylabel('')
+        g3.tick_params(labelsize=7)
+        plt.setp(ax3.yaxis.get_majorticklabels(), rotation=0)
+
     # create seaborn heatmap
-    plt.title(feature)
-    plt.tick_params(labelsize=10)
-    plt.yticks(rotation=0)
+
+    g1.tick_params(labelsize=7)
+    g2.tick_params(labelsize=7)
+    plt.setp(ax1.yaxis.get_majorticklabels(), rotation=0)
+    plt.setp(ax2.yaxis.get_majorticklabels(), rotation=0)
     plt.tight_layout()
-    plt.show()
-    plt.savefig(cfg.data['data'] + 'heatmaps/' + level + '/range_' + feature + '.png', bbox_inches='tight')
-    plt.close()
+    # plt.show()
+    plt.savefig(cfg.data['data'] + 'heatmaps/range_' + feature + '_union.png', bbox_inches='tight') # change
+    # plt.close()
 
 
 def draw_barplot(x, y):
